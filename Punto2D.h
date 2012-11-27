@@ -6,7 +6,7 @@
 class Punto2D : public Figura2D {
 	unsigned int cx, cy;
 public:
-	Punto2D(unsigned int, unsigned int);
+	Punto2D(unsigned int = 0, unsigned int = 0);
 	Punto2D(const Punto2D&);
 	virtual ~Punto2D();
 	virtual void dibujar();

@@ -1,21 +1,24 @@
 #include "Punto2D.h"
+#include "Linea2D.h"
 #include <GL/glut.h>
 
 GLuint reg;
 
-void init(const int width, const int height) {
+void init() {
 	glClearColor(1.0, 1.0, 1.0, 0.0);
 	reg = glGenLists(1);
 	
 	glNewList(reg, GL_COMPILE);
-		for (int i = 1; i < 200; i++ ) {
-			Punto2D punto(i, i);
-			punto.dibujar();
-		}
+		glColor3f(1.0, 0.0, 1.0);
+		Linea2D tmp(1, 1, 200, 200);
+		tmp.dibujar();
 	glEndList();
+}
 
+void winReshapeFcn(int newWidth, int newHeight) {
 	glMatrixMode(GL_PROJECTION);
-	gluOrtho2D(0.0, width, height, 0.0);	
+	glLoadIdentity();
+	gluOrtho2D(0.0, newWidth, newHeight, 0.0);	
 }
 
 void genDibujo(void) {
@@ -31,8 +34,9 @@ int main(int argc, char* argv[]) {
 	glutInitWindowPosition(50, 100);
 	glutInitWindowSize(width, height);
 	glutCreateWindow("Prueba 1");
-	init(width, height);
+	init();
 	glutDisplayFunc(genDibujo);
+	glutReshapeFunc(winReshapeFcn);
 	glutMainLoop();
 
 	return 0;	

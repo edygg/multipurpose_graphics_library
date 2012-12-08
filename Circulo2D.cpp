@@ -5,7 +5,7 @@ Circulo2D::Circulo2D(Punto2D centro, unsigned int radio) {
 	this->radio = radio;
 }
 
-Circulo2D::Circulo2D(unsigned int x, unsigned int y, unsigned int r) {
+Circulo2D::Circulo2D(int x, int y, unsigned int r) {
 	this->coordCentro = new Punto2D(x, y);
 	this->radio	= r;
 }

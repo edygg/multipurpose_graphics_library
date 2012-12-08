@@ -1,7 +1,10 @@
 #include "Punto2D.h"
 #include "Linea2D.h"
 #include "Circulo2D.h"
+#include "Poligono2D.h"
 #include <GL/glut.h>
+#include <iostream>
+using namespace std;
 
 GLuint reg;
 
@@ -11,10 +14,16 @@ void init() {
 	
 	glNewList(reg, GL_COMPILE);
 		glColor3f(1.0, 0.0, 1.0);
-		Linea2D tmp(0, 0, 200, 200);
+		Linea2D tmp(-200, -200, 200, 200);
 		tmp.dibujar();
-		Circulo2D c(100, 100, 200);
+		Circulo2D c(-100, -100, 50);
 		c.dibujar();
+		Poligono2D poli;
+		poli.agregarPunto(1, 0);
+		poli.agregarPunto(100, 0);
+		poli.agregarPunto(100, 100);
+		poli.agregarPunto(1, 100);
+		poli.dibujar();
 	glEndList();
 }
 

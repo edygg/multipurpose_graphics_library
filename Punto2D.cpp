@@ -1,6 +1,6 @@
 #include "Punto2D.h"
 
-Punto2D::Punto2D(unsigned int x, unsigned int y) : cx(x), cy(y) {}
+Punto2D::Punto2D(int x, int y) : cx(x), cy(y) {}
 
 Punto2D::Punto2D(const Punto2D& value) {
 	this->cx = value.cx;
@@ -16,11 +16,33 @@ void Punto2D::dibujar() {
 	glFlush();	
 }
 
-unsigned int Punto2D::getX() const {
+int Punto2D::getX() const {
 	return cx;	
 }
 
-unsigned int Punto2D::getY() const {
+int Punto2D::getY() const {
 	return cy;	
+}
+
+bool Punto2D::operator==(const Punto2D& val) const {
+	if (this->cx == val.cx && this->cy == val.cy)
+		return true;
+
+	return false;
+}
+
+
+bool Punto2D::operator<(const Punto2D& val) const {
+	if (this->cx < val.cx || this->cy <= val.cy)
+		return true;
+
+	return false;
+}
+
+bool Punto2D::operator>(const Punto2D& val) const {
+	if (this->cx > val.cx || this->cy >= val.cy)
+		return true;
+
+	return false;
 }
 

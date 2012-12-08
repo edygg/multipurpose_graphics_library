@@ -13,7 +13,7 @@ class Circulo2D : public Figura2D {
 	inline double toRadians(const float grades) { return static_cast<double>(grades * (PI / 180.0)); }
 public:
 	Circulo2D(Punto2D, unsigned int);
-	Circulo2D(unsigned int = 0, unsigned int = 0, unsigned int = 10);
+	Circulo2D(int = 0, int = 0, unsigned int = 10);
 	Circulo2D(const Circulo2D&);
 	void dibujar();
 	~Circulo2D();

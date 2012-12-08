@@ -1,1 +1,0 @@
-![textmate](https://raw.github.com/textmate/textmate/gh-pages/images/screenshot.png)

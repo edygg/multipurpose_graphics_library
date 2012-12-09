@@ -8,10 +8,10 @@ libs_OpenGL = -lGL -lGLU -lglut
 cflags = -c
 
 #Archivos necesarios a compilar
-archivos = Punto2D.o Circulo2D.o Poligono2D.o Linea2D.o prueba.o
+archivos = Punto2D.o Circulo2D.o Poligono2D.o Linea2D.o Grafico2D.o prueba.o
 
 #Clases de la Librería MGL
-clases = Punto2D.o Circulo2D.o Poligono2D.o Linea2D.o
+clases = Punto2D.o Circulo2D.o Poligono2D.o Linea2D.o Grafico2D.o
 
 all : test
 	rm $(archivos)
@@ -30,6 +30,9 @@ Linea2D.o : Punto2D.o
 
 Circulo2D.o : Punto2D.o
 	$(cc) $(cflags) $(libs_OpenGL) Circulo2D.cpp
+
+Grafico2D.o : Punto2D.o Linea2D.o Circulo2D.o
+	$(cc) $(cflags) $(libs_OpenGL) Grafico2D.cpp
 
 Punto2D.o : 
 	$(cc) $(cflags) $(libs_OpenGL) Punto2D.cpp

@@ -2,8 +2,10 @@
 #include "Linea2D.h"
 #include "Circulo2D.h"
 #include "Poligono2D.h"
+#include <GL/gl.h>
 #include <GL/glut.h>
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 GLuint reg;
@@ -13,7 +15,7 @@ void init() {
 	reg = glGenLists(1);
 	
 	glNewList(reg, GL_COMPILE);
-		glColor3f(1.0, 0.0, 1.0);
+		glColor3f(0.2, 0.3, 0.5);
 		Linea2D tmp(-200, -200, 200, 200);
 		tmp.dibujar();
 		Circulo2D c(-100, -100, 50);
@@ -24,14 +26,20 @@ void init() {
 		poli.agregarPunto(100, 100);
 		poli.agregarPunto(1, 100);
 		poli.dibujar();
+		glColor3f(0.0, 0.0, 0.0);
+		glRasterPos2i(50, -100);
+		const char* text = "Hola que tal";
+		for (int i = 0; i < strlen(text); i++)
+			glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, text[i]);
 	glEndList();
 }
 
 void winReshapeFcn(int newWidth, int newHeight) {
+	glViewport(0, 0, newWidth, newHeight);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
+	glClear(GL_COLOR_BUFFER_BIT);
 	gluOrtho2D(-1 * (newWidth / 2), newWidth / 2, -1 * (newHeight / 2), newHeight / 2);
-		
 }
 
 void genDibujo(void) {

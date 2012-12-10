@@ -68,9 +68,11 @@ int main(int argc, char* argv[]) {
 	bool ingresado = false; //Valida si hay datos ingresados
 
 	do {
+		/*
 		nombre = ""; //Inicializa el nombre con una cadena vacía
 		etiquetas = ""; //Inicializa las etiquetas con una cadena vacía
 		datos.clear(); //Borra todos los datos que se guarden en el vector
+		*/
 		
 		opcion = menuPrincipal(); //Lee una opcion del menú principal
 

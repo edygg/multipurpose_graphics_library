@@ -13,7 +13,7 @@
 using namespace std;
 
 /*************************************************
- *              Clase Padre Figura2D             *
+ *              Clase Hija Circulo2D             *
  *  Todas las clases heredan de ésta. Posee un   *
  *  método dibujar para que cada clase hija      *
  *  sobreescriba y especialice ese método        *

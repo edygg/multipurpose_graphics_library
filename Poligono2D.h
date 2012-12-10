@@ -38,8 +38,6 @@ public:
 	//Agrega puntos al vector, recibe dos parámetros la
 	//coordenada en X y la coordenada en Y del vértice 
 	bool agregarPunto(const int, const int);
-	//Elimina un punto del vector
-	bool eliminarPunto(const Punto2D);
 };
 
 #endif

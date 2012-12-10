@@ -1,9 +1,10 @@
 #include "Poligono2D.h"
-
+//Constructor de polígono
 Poligono2D::Poligono2D() {
 }
-
+//Constructor de copia
 Poligono2D::Poligono2D(const Poligono2D& pol) {
+	//Copia cada uno de los puntos del vector del otro polígono
 	for (int i = 0; i < pol.puntos.size(); i++) {
 		this->puntos.push_back(Punto2D(pol.puntos[i].getX(), pol.puntos[i].getY()));
 	}

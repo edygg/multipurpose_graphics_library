@@ -3,12 +3,15 @@
 #include "Circulo2D.h"
 #include "Poligono2D.h"
 #include "Grafico2D.h"
+
 #include <GL/gl.h>
 #include <GL/glut.h>
+
 #include <iostream>
 #include <cstring>
 #include <string>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 void init(const char*, const char*, float[], unsigned int);
@@ -34,6 +37,10 @@ int main(int argc, char* argv[]) {
 	bool ingresado = false;
 
 	do {
+		nombre = "";
+		etiquetas "";
+		datos.clean();
+		
 		opcion = menuPrincipal();
 
 		switch(opcion) {
@@ -117,7 +124,40 @@ int main(int argc, char* argv[]) {
 			break;
 
 			case EXPORTAR_DATOS:
-			{}
+			{
+				if (ingresado) {
+					ofstream archivo("chart.csv", ios::out);
+
+					if(!archivo) {
+						cerr << "No se pudo abrir archivo" << endl;
+						break;
+					}
+
+					string tmp;
+
+					for (int i = 0; i < etiquetas.size(); i += 3) {
+						tmp = etiquetas.substr(i, 3);
+						if (i == etiquetas.size() - 1)
+							archivo << tmp.c_str();
+						else
+							archivo << tmp.c_str() << ",";
+					}
+					archivo << "\n";
+
+					for (int i = 0; i < datos.size(); i++) {
+						if (i == datos.size() - 1)
+							archivo << datos[i];
+						else
+							archivo << datos[i] << ",";
+					}
+					archivo << "\n";
+
+					cout << "Archivo creado con éxito!" << endl;
+
+				} else {
+					cerr << "No hay datos que exportar" << endl;
+				}
+			}
 			break;
 		}
 
@@ -132,6 +172,8 @@ int menuPrincipal() {
 	int op;
 
 	do {
+		cout << endl;
+
 		cout << "\t1. Crear gráfico" << endl
 			 << "\t2. Exportar datos" << endl
 			 << "\t3. Salir" << endl
